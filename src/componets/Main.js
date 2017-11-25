@@ -17,7 +17,13 @@
     console.log('book list -', this.state.books);
   }
 
-
+  updateBookDetails = async (bookinput, id) =>{
+   let newBook = {
+     ...bookinput
+   }
+   let newBooks = await axios.patch(`https://tmartin-books-api.herokuapp.com/books/edit/${id}`, newBook)
+   this.setState({books: newBooks})
+  }
 
 
 
@@ -28,7 +34,10 @@
 
        <div>
          <Header />
-         <Booklist books={this.state.books}/>
+         <Booklist
+           books={this.state.books}
+           updateBookDetails={this.updateBookDetails}
+           />
          <Footer />
        </div>
      )
