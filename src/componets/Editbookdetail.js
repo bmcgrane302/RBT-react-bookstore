@@ -6,7 +6,9 @@ class Editbookdetail extends Component{
 
   state = {
     title:'',
-    year_published:0
+    year_published:0,
+
+    expanded:false
   }
 
   editBookState = (e) =>{
@@ -14,6 +16,11 @@ class Editbookdetail extends Component{
     this.props.updateBookDetails(this.state, parseInt(this.props.books.id))
     console.log('this is local state', this.state);
   }
+
+  editHandler = () =>{
+    this.setState({expanded: !this.state.expanded})
+  }
+
   render(){
     return(
       <div>
@@ -27,9 +34,10 @@ class Editbookdetail extends Component{
               Year Published: {this.props.books.year_published} <br/>
             </CardText>
             <Button
-              onClick={()=> this.editHandler(this.props.books.id)}
+              onClick={this.editHandler}
               >Edit</Button>
 
+            { this.state.expanded ?
             <form onSubmit={this.editBookState}>
               <input
                 placeholder="title"
@@ -44,7 +52,8 @@ class Editbookdetail extends Component{
                 onChange={(e)=> this.setState({year_published: e.target.value})}
                  />
                <input type='submit'/>
-            </form>
+            </form> : null
+          }
           </CardBody>
         </Card>
       </div>
