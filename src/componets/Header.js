@@ -1,18 +1,35 @@
-import React from 'react'
+import React from 'react';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
-const Header = (props) => {
-  return (
-    <div className="navbar navbar-default" role="navigation">
-      <div className="container">
-        <div className="navbar-header">
-          <a className="navbar-brand" href="/">RBT Book Store</a>
-        </div>
-        <ul className="nav navbar-nav navbar-right">
-          <li><a href="/"><button type="button" className="btn btn-primary btn-sm">Add New Book</button></a></li>
-        </ul>
+class Header extends React.Component {
+
+
+  state = {
+    isOpen: false
+  }
+  toggle() {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+  render() {
+    return (
+      <div>
+        <Navbar color="primary" light expand="md">
+          <NavbarBrand href="/">RBT Book Store</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/components/">Components</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
       </div>
-    </div>
-  )
+    );
+  }
 }
 
 export default Header

@@ -5,10 +5,18 @@ body {
 }
 footer{
   position: absolute;
-  bottom: 0;
   padding-top: 15px;
   height: 50px;
   width: 100%;
   background-color: #c7c7c7;
   color: #414141;
+}
+.cardDetail{
+  height: 230px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 40%;
+}
+ul li{
+  padding: 5px;
 }
