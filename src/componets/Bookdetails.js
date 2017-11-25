@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Editbookdetail from './Editbookdetail';
+import { Button } from 'reactstrap';
+
 
 class Bookdetails extends Component {
 
@@ -16,8 +19,10 @@ toggleExpanded = () => {
 
       <li>
         {this.props.books.title}
-        <button onClick={()=> {this.toggleExpanded()}}>details</button>
-        {this.state.expanded ? <span>{this.props.books.author_first_name}</span> : null}
+        <Button color="secondary" size="sm" onClick={()=> {this.toggleExpanded()}}>  Details</Button>
+        {this.state.expanded ? <Editbookdetail
+          books={this.props.books}
+        /> : null}
       </li>
 
     )
