@@ -3,6 +3,17 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 class Editbookdetail extends Component{
+
+  state = {
+    title:'',
+    year_published:0
+  }
+
+  editBookState = (e) =>{
+    e.preventDefault()
+    this.props.updateBookDetails(this.state, parseInt(this.props.books.id))
+    console.log('this is local state', this.state);
+  }
   render(){
     return(
       <div>
@@ -15,7 +26,25 @@ class Editbookdetail extends Component{
               Publisher: {this.props.books.publisher_name} <br/>
               Year Published: {this.props.books.year_published} <br/>
             </CardText>
-            <Button>Button</Button>
+            <Button
+              onClick={()=> this.editHandler(this.props.books.id)}
+              >Edit</Button>
+
+            <form onSubmit={this.editBookState}>
+              <input
+                placeholder="title"
+                name='title'
+                value={this.state.title}
+                onChange={(e)=> this.setState({title: e.target.value})}
+                />
+              <input
+                placeholder="year published"
+                name='year_published'
+                value={this.state.year_published}
+                onChange={(e)=> this.setState({year_published: e.target.value})}
+                 />
+               <input type='submit'/>
+            </form>
           </CardBody>
         </Card>
       </div>

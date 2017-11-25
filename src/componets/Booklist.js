@@ -5,7 +5,10 @@ class Booklist extends Component {
 
   bookList() {
     return this.props.books.map(book => {
-      return  <Bookdetails  books={book}/>
+      return  <Bookdetails
+      books={book}
+      updateBookDetails={this.props.updateBookDetails}
+      />
   })
 }
 

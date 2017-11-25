@@ -22,6 +22,7 @@ toggleExpanded = () => {
         <Button color="secondary" size="sm" onClick={()=> {this.toggleExpanded()}}>  Details</Button>
         {this.state.expanded ? <Editbookdetail
           books={this.props.books}
+          updateBookDetails={this.props.updateBookDetails}
         /> : null}
       </li>
 
